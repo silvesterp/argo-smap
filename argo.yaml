@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-alert-deployment
+  labels:
+    app: argo-alert
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argo-alert
+  template:
+    metadata:
+      labels:
+        app: argo-alert
+    spec:
+      containers:
+      - name: argo-alert-container
+        image: silvesterp/argo-alert:latest
+        ports:
+        - containerPort: 8080  # This is a placeholder; adjust if your application listens on a different port.
